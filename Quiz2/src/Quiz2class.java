@@ -2,34 +2,45 @@ import java.util.Scanner;
 
 import org.apache.poi.ss.formula.functions.FinanceLib;
 
-
 public class Quiz2class {
-
+ 
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		
-		double r;
-		System.out.print(": ");
-		r = (scanner.nextDouble());
-		
-		double n;
-		System.out.print("Years to repay loan: ");
-		n = (scanner.nextDouble());
-	
-		
-		double y;
-		System.out.print("APR for your loan: ");
-		y = (scanner.nextDouble());
+		double t;
+		System.out.print("Enter Tution: ");
+		t = (scanner.nextDouble());
 		
 		double p;
-		boolean t;
-		double FV;
+		System.out.print("enter percent increase: ");
+		p = (scanner.nextDouble()) / 100;
 		
-		t = false;
-		FV = FinanceLib.fv(r, n, y, p, t);
+		double t2, t3, t4;
+		t2 = t * p;
+		t3 = t2 * p;
+		t4 = t3 * p;
+		
+		double T;
+		T = t + t4 + t2 + t3;
+		
+		int y;
+		System.out.print("enter term of repayment: ");
+		y = (scanner.nextInt())*12;
+		
+		int APR;
+		System.out.print("Enter APR: ");
+		APR = (scanner.nextInt())/100;
 		
 		
+		double z = 0;
+		boolean f = false;
+		double PMT;
 		
+		PMT = FinanceLib.pmt(APR, y, T, z, f);
+		System.out.println("Pay each month: " + (PMT/12)*-1);
 	}
 
 }
+
+
+
